@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ご提案｜駐車場ホームページリニューアル – Kairos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --asphalt:#232529;
+    --navy:#122C43;
+    --navy-light:#1C4368;
+    --line-yellow:#F0B429;
+    --concrete:#F3F1EA;
+    --concrete-dark:#E4E0D4;
+    --cone-red:#C0392B;
+    --white:#FFFFFF;
+    --text-dark:#232529;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{
+    font-family:'Noto Sans JP',sans-serif;
+    color:var(--text-dark);
+    background:var(--concrete);
+    line-height:1.8;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,h4{
+    font-family:'Oswald',sans-serif;
+    letter-spacing:0.02em;
+  }
+  a{text-decoration:none;}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px;}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    background:
+      repeating-linear-gradient(
+        115deg,
+        rgba(255,255,255,0.05) 0px,
+        rgba(255,255,255,0.05) 2px,
+        transparent 2px,
+        transparent 46px
+      ),
+      linear-gradient(160deg,var(--navy) 0%, var(--asphalt) 65%, #0d1620 100%);
+    color:var(--white);
+    padding:90px 0 110px;
+    overflow:hidden;
+  }
+  .hero::before{
+    content:"";
+    position:absolute;
+    left:-10%;
+    bottom:-60px;
+    width:120%;
+    height:120px;
+    background:
+      repeating-linear-gradient(
+        90deg,
+        var(--line-yellow) 0px,
+        var(--line-yellow) 60px,
+        transparent 60px,
+        transparent 110px
+      );
+    opacity:0.9;
+    transform:rotate(-2deg);
+  }
+  .hero-inner{
+    position:relative;
+    z-index:2;
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    gap:48px;
+  }
+  .hero-badge{
+    display:inline-block;
+    font-size:12px;
+    letter-spacing:0.15em;
+    background:rgba(240,180,41,0.15);
+    border:1px solid var(--line-yellow);
+    color:var(--line-yellow);
+    padding:6px 14px;
+    border-radius:2px;
+    margin-bottom:22px;
+    font-family:'Oswald',sans-serif;
+  }
+  .hero-text{flex:1 1 420px;}
+  .hero-text h1{
+    font-size:clamp(30px,4.6vw,52px);
+    font-weight:700;
+    line-height:1.35;
+    margin-bottom:22px;
+  }
+  .hero-text h1 span{color:var(--line-yellow);}
+  .hero-text p{
+    font-size:15px;
+    color:#D8DEE6;
+    max-width:480px;
+  }
+  .hero-sign{
+    flex:0 0 220px;
+    display:flex;
+    justify-content:center;
+  }
+  .sign-p{
+    width:200px;
+    height:200px;
+    border-radius:16px;
+    background:linear-gradient(145deg,var(--navy-light),var(--navy));
+    border:6px solid var(--white);
+    box-shadow:0 20px 40px rgba(0,0,0,0.4), inset 0 0 0 3px var(--line-yellow);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    position:relative;
+  }
+  .sign-p span{
+    font-family:'Oswald',sans-serif;
+    font-size:120px;
+    font-weight:700;
+    color:var(--white);
+  }
+  .sign-p::after{
+    content:"COSMO PK";
+    position:absolute;
+    bottom:14px;
+    font-size:11px;
+    letter-spacing:0.15em;
+    color:var(--line-yellow);
+  }
+
+  /* ---------- SECTION COMMON ---------- */
+  section{padding:80px 0;}
+  .section-title{
+    font-size:clamp(24px,3vw,34px);
+    font-weight:600;
+    color:var(--navy);
+    margin-bottom:16px;
+  }
+  .section-title small{
+    display:block;
+    font-size:12px;
+    letter-spacing:0.2em;
+    color:var(--cone-red);
+    margin-bottom:10px;
+    font-weight:500;
+  }
+  .lead{
+    font-size:15px;
+    color:#4a4d52;
+    max-width:640px;
+    margin-bottom:48px;
+  }
+
+  /* ---------- UNDERSTANDING ---------- */
+  .understand{
+    background:var(--white);
+    border-top:6px solid var(--navy);
+    border-bottom:6px solid var(--navy);
+  }
+  .understand-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:40px;
+  }
+  .issue-list{
+    list-style:none;
+  }
+  .issue-list li{
+    position:relative;
+    padding:14px 0 14px 34px;
+    border-bottom:1px dashed #cfcbbd;
+    font-size:14.5px;
+  }
+  .issue-list li:last-child{border-bottom:none;}
+  .issue-list li::before{
+    content:"P";
+    position:absolute;
+    left:0;
+    top:12px;
+    width:22px;
+    height:22px;
+    background:var(--navy);
+    color:var(--white);
+    font-family:'Oswald',sans-serif;
+    font-size:12px;
+    font-weight:700;
+    border-radius:4px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .voice-box{
+    background:var(--concrete);
+    border-left:5px solid var(--line-yellow);
+    padding:28px 26px;
+    font-size:14.5px;
+  }
+  .voice-box strong{
+    display:block;
+    font-family:'Oswald',sans-serif;
+    color:var(--navy);
+    font-size:16px;
+    margin-bottom:12px;
+    letter-spacing:0.03em;
+  }
+
+  /* ---------- VALUE CARDS ---------- */
+  .value{
+    background:var(--concrete-dark);
+  }
+  .card-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:26px;
+  }
+  .card{
+    background:var(--white);
+    padding:30px 24px 26px;
+    border-radius:6px;
+    position:relative;
+    box-shadow:0 10px 24px rgba(30,40,50,0.08);
+  }
+  .card::before{
+    content:"";
+    position:absolute;
+    top:0;left:0;right:0;
+    height:6px;
+    background:repeating-linear-gradient(90deg,var(--line-yellow) 0 10px, var(--navy) 10px 20px);
+    border-radius:6px 6px 0 0;
+  }
+  .card .num{
+    font-family:'Oswald',sans-serif;
+    font-size:34px;
+    color:var(--concrete-dark);
+    -webkit-text-stroke:1.5px var(--navy);
+    color:transparent;
+    margin-bottom:10px;
+  }
+  .card h3{
+    font-size:17px;
+    color:var(--navy);
+    margin-bottom:12px;
+  }
+  .card p{
+    font-size:13.5px;
+    color:#555;
+  }
+
+  /* ---------- SCHEDULE ---------- */
+  .schedule{
+    background:var(--navy);
+    color:var(--white);
+    position:relative;
+  }
+  .schedule .section-title{color:var(--white);}
+  .schedule .lead{color:#C7D2DD;}
+  .timeline{
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:16px;
+  }
+  .step{
+    background:rgba(255,255,255,0.06);
+    border:1px solid rgba(255,255,255,0.15);
+    padding:22px 16px 20px;
+    border-radius:6px;
+    text-align:left;
+    position:relative;
+  }
+  .step .gate{
+    width:30px;
+    height:6px;
+    background:var(--line-yellow);
+    margin-bottom:14px;
+    border-radius:2px;
+  }
+  .step .s-num{
+    font-family:'Oswald',sans-serif;
+    font-size:12px;
+    color:var(--line-yellow);
+    letter-spacing:0.1em;
+    margin-bottom:6px;
+  }
+  .step h4{
+    font-size:15px;
+    margin-bottom:8px;
+    font-weight:500;
+  }
+  .step p{
+    font-size:12.5px;
+    color:#B9C4D0;
+  }
+
+  /* ---------- CLOSING ---------- */
+  .closing{
+    background:linear-gradient(150deg,#0d1620,var(--asphalt));
+    color:var(--white);
+    text-align:center;
+    padding:100px 0;
+    position:relative;
+    overflow:hidden;
+  }
+  .closing::before{
+    content:"";
+    position:absolute;
+    top:-40px;left:-10%;
+    width:120%;
+    height:100px;
+    background:repeating-linear-gradient(90deg,var(--line-yellow) 0px,var(--line-yellow) 60px,transparent 60px,transparent 110px);
+    transform:rotate(2deg);
+    opacity:0.8;
+  }
+  .closing-inner{position:relative;z-index:2;}
+  .closing h2{
+    font-size:clamp(24px,4vw,38px);
+    margin-bottom:16px;
+  }
+  .closing p{
+    font-size:14.5px;
+    color:#CBD3DB;
+    max-width:520px;
+    margin:0 auto 34px;
+  }
+  .cta-btn{
+    display:inline-block;
+    background:var(--line-yellow);
+    color:var(--asphalt);
+    font-family:'Oswald',sans-serif;
+    font-weight:600;
+    font-size:16px;
+    letter-spacing:0.05em;
+    padding:16px 42px;
+    border-radius:3px;
+    box-shadow:0 12px 26px rgba(240,180,41,0.35);
+    transition:transform .2s ease;
+  }
+  .cta-btn:hover{transform:translateY(-3px);}
+  .closing .footnote{
+    margin-top:26px;
+    font-size:12px;
+    color:#8B95A0;
+  }
+
+  footer{
+    background:#0d1620;
+    color:#7C8794;
+    text-align:center;
+    font-size:12px;
+    padding:22px 0;
+  }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width:820px){
+    .understand-grid{grid-template-columns:1fr;}
+    .timeline{grid-template-columns:1fr 1fr;}
+  }
+  @media (max-width:600px){
+    .hero{padding:70px 0 90px;}
+    .hero-inner{flex-direction:column-reverse;}
+    .sign-p{width:150px;height:150px;}
+    .sign-p span{font-size:90px;}
+    .timeline{grid-template-columns:1fr;}
+    section{padding:60px 0;}
+  }
+</style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="wrap hero-inner">
+      <div class="hero-text">
+        <span class="hero-badge">KAIROS PROPOSAL</span>
+        <h1>探す。止める。決める。<br>その<span>最初の1分</span>を、<br>迷わせないサイトへ。</h1>
+        <p>出馬様が運営される駐車場サイトのリニューアルについて、Web制作・システム開発チーム「Kairos」よりご提案いたします。全15ページの情報を整理し、利用者が迷わず駐車場を見つけ・選べる導線を設計します。</p>
+      </div>
+      <div class="hero-sign">
+        <div class="sign-p"><span>P</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- UNDERSTANDING -->
+  <section class="understand">
+    <div class="wrap">
+      <div class="section-title"><small>UNDERSTANDING THE PROJECT</small>本件、こう受け止めています</div>
+      <p class="lead">現サイト（cosmopk.com）を拝見し、15ページ規模という情報量の多さと、駐車場サイト特有の「探しやすさ」の重要性を踏まえ、以下のような課題があると想定しています。</p>
+      <div class="understand-grid">
+        <ul class="issue-list">
+          <li>拠点・料金・空き状況などの情報が増えるほど、ページ間の行き来が煩雑になりやすい</li>
+          <li>スマホから「今すぐ近くの駐車場を知りたい」利用者への表示最適化が不十分になりがち</li>
+          <li>問い合わせ・契約への導線が各ページに分散し、比較・決定までの心理的距離が遠い</li>
+          <li>長年の更新でデザインやコーディングが混在し、保守・更新のしやすさが低下しやすい</li>
+        </ul>
+        <div class="voice-box">
+          <strong>Kairosの見立て</strong>
+          15ページという規模は「情報の量」としては十分な資産です。課題は多くの場合、量ではなく「並べ方」。エリア・料金・拠点特性で情報を整理し直し、利用者が3クリック以内に必要な答えへ辿り着ける構造に組み直すことで、成約率と管理のしやすさを同時に改善できると考えています。
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VALUE -->
+  <section class="value">
+    <div class="wrap">
+      <div class="section-title"><small>WHAT KAIROS PROVIDES</small>ご提供できる価値</div>
+      <p class="lead">単なる見た目のリニューアルではなく、「探す・比較する・決める」という利用者の行動に沿った設計から実装まで対応します。</p>
+      <div class="card-grid">
+        <div class="card">
+          <div class="num">01</div>
+          <h3>15ページの情報設計</h3>
+          <p>拠点・料金・アクセスなど分散した情報をカテゴリ整理し、迷わないナビゲーションとサイトマップを再構築します。</p>
+        </div>
+        <div class="card">
+          <div class="num">02</div>
+          <h3>スマホ最適レイアウト</h3>
+          <p>移動中・現地での利用を想定し、片手操作で拠点比較・電話問い合わせまで到達できるモバイルUIを設計します。</p>
+        </div>
+        <div class="card">
+          <div class="num">03</div>
+          <h3>問い合わせ導線の強化</h3>
+          <p>各ページに一貫したCTA（見積・空き確認・問い合わせ）を配置し、比較検討から契約までの距離を短縮します。</p>
+        </div>
+        <div class="card">
+          <div class="num">04</div>
+          <h3>更新しやすい実装</h3>
+          <p>料金や拠点情報など変動が多い箇所は、ワーカー様自身で更新しやすい構造・CMS運用も見据えて構築します。</p>
+        </div>
+        <div class="card">
+          <div class="num">05</div>
+          <h3>リニューアル実績に基づく進行</h3>
+          <p>既存サイトを壊さず段階的に移行する進め方や、公開後の表示崩れ・SEO低下を防ぐ移行設計もお任せください。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SCHEDULE -->
+  <section class="schedule">
+    <div class="wrap">
+      <div class="section-title">進め方・スケジュールイメージ</div>
+      <p class="lead">納期はご相談の上で決定しますが、一般的な15ページ規模のリニューアルでは、目安として以下のような進行を想定しています。</p>
+      <div class="timeline">
+        <div class="step">
+          <div class="gate"></div>
+          <div class="s-num">STEP 01</div>
+          <h4>ヒアリング・現状分析</h4>
+          <p>現サイトの構成・運用課題・ご要望を整理</p>
+        </div>
+        <div class="step">
+          <div class="gate"></div>
+          <div class="s-num">STEP 02</div>
+          <h4>情報設計・ワイヤー</h4>
+          <p>15ページの構成・導線・サイトマップ作成</p>
+        </div>
+        <div class="step">
+          <div class="gate"></div>
+          <div class="s-num">STEP 03</div>
+          <h4>デザイン制作</h4>
+          <p>トンマナ決定〜主要ページのデザイン確定</p>
+        </div>
+        <div class="step">
+          <div class="gate"></div>
+          <div class="s-num">STEP 04</div>
+          <h4>実装・コーディング</h4>
+          <p>全ページ実装、レスポンシブ対応、動作確認</p>
+        </div>
+        <div class="step">
+          <div class="gate"></div>
+          <div class="s-num">STEP 05</div>
+          <h4>検証・公開</h4>
+          <p>表示・リンク確認後、公開・移行サポート</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CLOSING -->
+  <div class="closing">
+    <div class="wrap closing-inner">
+      <h2>まずは、現状のお話からお聞かせください。</h2>
+      <p>ご予算・納期ともにご相談を歓迎しております。まずは自己紹介・実績のご提示とともに、お見積りをお送りいたします。出馬様のご要望に合わせて、無理のない進行をご一緒に組み立てます。</p>
+      <a href="#" class="cta-btn">Kairosに相談してみる</a>
+      <div class="footnote">本ページはご提案用に作成したものです。ご質問はお気軽にお問い合わせください。</div>
+    </div>
+  </div>
+
+  <footer>Kairos — Web制作・システム開発チーム</footer>
+
+</body>
+</html>
